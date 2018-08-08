@@ -1,0 +1,144 @@
+body{
+	position: relative;
+	background-color: #FFF866;
+	width: 100%;
+	text-align:center;
+    overflow-y: auto;
+	overflow-x: hidden;
+	font-family: "Lucida Console", Monaco, monospace;
+	color: black;
+}
+
+h1{
+	color: #1C1C1C;
+	margin-top: 10px;
+	margin-left: 50px;
+	margin-right: 50px;
+	font-family: "Lucida Console", Monaco, monospace;
+	text-align: center;
+	font-size: 65px;
+}
+
+p{
+	font-family: "Lucida Console", Monaco, monospace;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 10px;
+	color: #1C1C1C;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+li{
+	font-family: "Lucida Console", Monaco, monospace;
+	text-align: center;
+	font-size: 18px;
+	color: #1C1C1C;
+}
+
+h2{
+	font-family: "Lucida Console", Monaco, monospace;
+	text-align: center;
+	color: #1C1C1C;
+	font-size: 70px;
+	padding: 0px;
+	line-height:40px;
+	margin-top: 40px;
+	margin-left:10px;
+}
+
+h3{
+	font-family: "Lucida Console", Monaco, monospace;
+	text-align: center;
+	color: #1C1C1C;
+	font-size: 30px;
+	padding: 10px;
+	line-height:40px;
+	margin-top: 40px;
+}
+
+#container{
+	background-color: white;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1050px;
+	height: 580px;
+	font-family: "Lucida Console", Monaco, monospace;
+	color: black;
+	
+}
+
+.btn {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #1C1C1C;
+	font-size: 20px;
+	background: #94FFF9;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	margin-top: 30px;
+	float: center;
+}
+
+.btn:hover {
+	background: #ffffff;
+	text-decoration: none;
+	margin-top: 30px;
+	float: center;
+}
+
+a, a:visited{
+	color: black;
+}
+
+a:hover{
+	background: #ffffff;
+}
+
+#screen, #levelX, #dead, #seinfeld, #pauseScreen{
+	border:1px solid #000000;
+	padding: 5px;
+	width: 1000px;
+	height: 500px;
+	background-color: #33CCFF;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 35px;
+	font-family: "Lucida Console", Monaco, monospace;
+	color: black;
+	
+}
+
+#levelNum, #num{
+	font-family: "Lucida Console", Monaco, monospace;
+	color: black;
+}
+
+canvas{
+	background-color: #33CCFF;
+}
+
+img{
+	vertical-align: middle;
+}
+
+.points{
+	border: 2px solid black;
+	padding: 5px;
+	background-color: white;
+	color: black;
+	width: 100px;
+	margin-left: 50px;
+	margin-bottom: 10px;
+	display: inline-table;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+p1{
+	margin-right:600px;
+}
+
+th{
+	width: 350px;
+}

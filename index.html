@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- title and favicon -->
+	<title>SAVE THE BEES</title>
+	<link href="images\bee.png" rel="icon" type="image/x-icon" />
+	
+	<!-- calling in the css, jquery, and processing js, as well as scaling the screen to any device -->
+	<link rel="stylesheet" type="text/css" href="css.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src = "processing.min.js" type="text/javascript"></script>
+
+</head>
+
+
+<!-- runs the game -->
+
+<body onkeydown="checkKey(event);">
+
+ 
+
+	<!-- title of the page -->
+	<h1>Save the Bees</h1>
+
+	<!-- game container -->
+	<div id="container">
+	
+	
+		<!-- points box -->
+		<div class="points" id="pointCount" style="display: none;">
+			0 Points
+		</div>
+
+		<!-- lives box -->
+		<div class="points" id="liveCount" style="display: none;">
+			5 Lives
+		</div>
+		
+		<!-- level box -->
+		<div class="points" id="levelCount" style="display: none;">
+			Level 1
+		</div>
+		
+		<!-- pause button -->
+		<button type="button" class="btn" onclick="$('#myCanvas').hide(); $('.points').hide(); $('#pause').hide(); $('#pauseScreen').show(); playing = false;" style="display: none; height: 35px; font-size: 12px; margin-left: 50px; margin-top:-50px;" id="pause">PAUSE</button>
+		
+
+		<!-- canvas: the game itself -->
+		<canvas id="myCanvas" width= "1000" height="500" style="border:1px solid #000000; display: none">
+			Your browser does not support the game.
+		</canvas>
+		
+
+		<!-- menu screen div (so they're the same size, background, etc.) -->
+		<div id="screen">
+		
+		
+		
+			<!-- start screen/menu -->
+			<div id="menuScreen">
+				<br><br><br><br>
+				<!-- title -->
+				<h2 style="font-size: 100px;">SAVE THE BEES</h2>
+				
+				<!-- image of the bee -->
+				<img src= "images\deadBee.gif" alt="bees?" id = "deadbee" style = "display: none;"/>
+				<img src= "images\beepollen.png" alt="bees?" id = "beepollen" style = "display: none;"/>
+				<img src="images\bee.png" alt="bees?" id = "bee" style = "display: none;"/>
+				<img src="images\homeBee.gif" alt="bees?" style="padding: 0px;"></img><br />
+				
+				<!-- buttons to start or how to -->
+				<button type="button" class="btn" onclick="$('#levelX').show(); $('#screen').hide();">START</button> <!-- hides screen, shows game and points + lives -->
+				<button type="button" class="btn" onclick="$('#howTo').show(); $('#menuScreen').hide();">HOW TO PLAY</button> <!-- hides menu, shows how to play page -->
+				<button type="button" class="btn" onclick="$('#aboutUs').show(); $('#menuScreen').hide();">ABOUT US</button> <!-- hides menu, shows about us page -->
+				<button type="button" class="btn" onclick="$('#resources').show(); $('#menuScreen').hide();">RESOURCES</button><!-- temporary works cited -->
+			</div>
+			
+			<!-- how to page (hidden when page is loaded, shown when "how to play" is clicked) -->
+			<div id="howTo" style="display: none;">
+			
+				<!-- title -->
+				<h2>HOW TO PLAY <button type="button" class="btn" onclick="$('#howTo').hide(); $('#menuScreen').show();" style="margin-top: -20px; margin-right: 10px; right: 10px; float: right;">X</button></h2>
+
+				<!-- instructions + visuals -->
+				<ul>
+					<li>Press the <b>up</b> (&#8593;) arrow to go up.</p>
+					<li>Collect the <b>pollen</b>. <img src="images\pollen.png" id = "pollen" width="30px;" height="auto;" /></p>
+					<li>Press the <b>spacebar</b> to deliver it to the <b>flowers</b> to earn points! <img src="images\flowerClosed.gif" id="closed" width="35px" height="auto;" /><img src="images\flowerOpen.gif" id="open" width="35px" height="auto;" /></p>
+				</ul>
+				<button type="button" class="btn" onclick="$('#howToTwo').show(); $('#howTo').hide();">NEXT</button>
+				
+			</div>
+			
+			<div id="howToTwo" style="display: none;">
+			
+				<!-- title -->
+				<h2>HOW TO PLAY <button type="button" class="btn" onclick="$('#howToTwo').hide(); $('#menuScreen').show();" style="margin-top: -20px; margin-right: 10px; right: 10px; float: right;">X</button></h2>
+
+				<!-- instructions + visuals -->
+				<ul>
+					<li>Don't drop the pollen in the <b>poisoned flowers</b> or you'll lose points! <img src="images\badClosedFlower.gif" id="badClosed" width="35px" height="auto;" /><img src="images\badOpenFlower.gif" id="badOpen" width="35px" height="auto;" /></p>
+					<li>Don't let the bee fly too low or you'll lose a life!</p>
+					<li>Don't get poisoned by the <b>insecticide</b> or you'll lose a life! <img src="images\gas.png" id = "gas" width="60px;" height="auto;" /></p>
+				</ul>
+				<button type="button" class="btn" onclick="$('#howTo').show(); $('#howToTwo').hide();">BACK</button>
+			</div>
+			
+			<div id="aboutUs" style="display: none;">
+				<!-- title-->
+				<h2>ABOUT US <button type="button" class="btn" onclick="$('#aboutUs').hide(); $('#menuScreen').show();" style="margin-top: -20px; margin-right: 10px; right: 10px; float: right;">X</button></h2>
+				
+				<!--information about us-->
+				<p><b>Save the Bees</b> was created by Zoe Husted, Jade Jordan. and Elena Murphy as their final project for the Girls Who Code summer immersion program hosted by Expedia in 2015.</p>
+				<p>The game was made to raise awareness of the declining bee population and the devastating effects that will result from the extinction of bees.</p>
+				<p><img src="images\pinkBee.gif" alt="bees?" style="padding: 0px; margin-right: 200px"></img>
+				<img src="images\greenBee.gif" alt="bees?" style="padding: 0px; margin-right:225px;"></img>
+				<img src="images\purpleBee.gif" alt="bees?" style="padding: 0px; margin-right:0px;"></img></p>
+				<table>
+				  <colgroup>
+				  </colgroup>
+				  <tr>
+					<th>Zoe</th>
+					<th>Jade</th>
+					<th>Elena</th>
+				  </tr>
+				  <tr>
+					<td>Zoe is a junior from San Diego. She spent 7 weeks of her summer away from home to create this game so hopefully it's worth playing. #savethebees #girlscan</td>
+					<td>Jade is a senior from Washington state. She spent the summer of 2015 learning about coding and is proud to share the first functioning game she's created.</td>
+					<td>Elena is a senior in Seattle who spends so much time playing video games anyways, she figured she might like to help make one. #winning</td>
+				  </tr>
+				</table>
+				
+			</div>
+			
+			<div id="resources" style="display: none;">
+
+				<h2>RESOURCES<button type="button" class="btn" onclick="$('#resources').hide(); $('#menuScreen').show();" style="margin-top: -20px; margin-right: 10px; right: 10px; float: right;">X</button></h2>
+				<p>
+					<b>ARTICLES:</b><br/>
+					<a href="http://qz.com/107970/scientists-discover-whats-killing-the-bees-and-its-worse-than-you-thought/">Scientists discover what&#8217;s killing the bees and it&#8217;s worse than you thought</a><br />
+					<a href="http://time.com/3821467/bees-honeybees-environment/">You Asked: Are the Honeybees Still Disappearing?</a><br />
+					<a href="http://time.com/559/the-plight-of-the-honeybee/">The Plight of the Honeybee</a> | 
+					<a href="https://www.nrdc.org/wildlife/animals/files/bees.pdf">Bee Facts</a><br />
+					<a href="http://honeylove.org/list-of-food/">List of Foods We Will Lose if We Don&#8217;t Save the Bees</a><br />
+					<a href="http://www.wired.com/2012/04/neonicotinoids-gardens/">Backyard Pesticide Use May Fuel Bee Die-Offs</a><br />
+					<a href="http://www.businessinsider.com/the-world-without-honeybees-2013-6#">What Our World Would Look Like Without Honeybees</a>
+					<a href="https://www.youtube.com/channel/UCn4HDI02U4f3VEsghRX7dRw">Where The Music Came From</a>
+				</p>
+				<p>
+					<b>FUN LINKS:</b><br/>
+					<a href="http://nymag.com/daily/intelligencer/2015/08/bees-try-to-steal-bike-nypd-responds.html">Bees Try to Steal Bike; NYPD Responds</a><br />
+					<a href="http://www.abc.net.au/news/2013-07-03/beekeeper-dog/4795960">Dog suits up for a day in the hives</a><br />
+					<a href="http://www.beeallies.com/">Honey Bee Allies</a> | 
+					<a href="http://www.script-o-rama.com/movie_scripts/a1/bee-movie-script-transcript-seinfeld.html" title="CLICK HERE!">More Reference</a>
+				</p>
+			</div>
+		</div>
+			
+		<div id="levelX" style="display: none;">
+			<h3 id ="levelName">LEVEL 1 <button type="button" class="btn" onclick="$('#levelX').hide(); $('#screen').show();" style="margin-top: -20px; margin-right: 10px; right: 10px; float: right;">X</button></h3>
+			<p id="paragraph" style="margin-top: 20px; padding-top: 20px;">
+				Poisonous insecticides are the causing bees to disappear across the country.<br/><br />
+				We need to save the bees! They help our crops grow and keep the environment healthy!<br/><br />
+				Help the bee pollinate the flowers and get home safe!</p>
+			<p id="numPoints" style="margin-top: 50px;">You need 50 points to beat this level.</p>
+			<button type="button" class="btn" onclick="$('#myCanvas').show(); $('.points').show(); $('#levelX').hide(); $('#pause').show(); $('#pause').show(); levelUp = false; ">GO</button> <!-- hides screen, shows game and points + lives -->
+		</div>
+		
+		<div id="dead" style="display: none;">
+			<h2><br /><br />YOU<br/><br />DIED</h2>
+			<p id="deadPoints">0</p>
+			<button type="button" class="btn" onclick="location.reload();">RETURN</button>
+		</div>
+		
+		<div id="seinfeld" style="display: none;">
+			<h3>According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway, because bees don't care what humans think is impossible.</h3>
+			<button type="button" class="btn" onclick="location.reload();">RETURN</button>
+		</div>
+		
+		<div id="pauseScreen" style="display:none;">
+			<h2>PAUSED</h2>
+			<br>
+			<p><button type="button" class="btn" onclick="$('#myCanvas').show(); $('.points').show(); $('#pause').show(); $('#pauseScreen').hide(); playing = true;">PLAY</button></p>
+			</br>
+			<p><img src="images\homeBee.gif" alt="bees?" style="padding: 0px; margin-right: 200px"></img>
+				<img src="images\homeBee.gif" alt="bees?" style="padding: 0px; margin-right:225px;"></img>
+				<img src="images\homeBee.gif" alt="bees?" style="padding: 0px; margin-right:0px;"></img></p>
+		</div>
+	</div>
+	
+	<!-- credits -->
+	<p>created by Zoe Husted, Jade Jordan, and Elena Murphy &copy; August 2015</p>
+	
+	<!-- calls in javascript -->
+	<script src="beesProject.js" type="text/javascript"></script>
+	
+	<!--cloud images-->
+	<img src = "images\cloud1.gif" id = "cloud1" style="display: none;"/>
+	<img src = "images\cloud2.gif" id = "cloud2" style="display: none;"/>
+	<img src = "images\cloud3.gif" id = "cloud3" style="display: none;"/>
+	
+	<!--music stuff -->
+	<audio controls source src="music\themerged.mp3" type="audio/mpeg" autoplay>
+	</audio>  
+
+	<div align="center"><a href="http://www.simplehitcounter.com" target="_blank"><img src="http://simplehitcounter.com/hit.php?uid=1939465&f=16776960&b=0" border="0" height="18" width="83" alt="web counter"></a></div>
+	
+	
+	
+</body>
+
+</html>
